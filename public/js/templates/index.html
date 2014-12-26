@@ -1,0 +1,12 @@
+<div class="container">
+  <form class="form-signin">
+    <h2 class="form-signin-heading">Enter a URL :</h2>
+    <label for="inputEmail" class="sr-only">Url</label>
+    <input type="text" id="inputUrl" class="form-control" ng-model='urlTarget' placeholder="Url" required autofocus>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click='submitUrl(urlTarget)'>Start ...</button>
+  </form>
+
+  <ul class="list-group" ng-show="showAllLinks" ng-repeat="link in AllLinks track by $index">
+    <li class="list-group-item">{{link}}</li>
+  </ul>
+</div>

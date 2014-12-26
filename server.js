@@ -10,7 +10,16 @@ var getRawBody   = require('raw-body');
 var cookieParser = require('cookie-parser');
 var session      = require('express-session');
 
+var zerorpc      = require("zerorpc");
+
 var MemoryStore = require('connect').session.MemoryStore;
+
+//-----------------------------------------
+//	Connection to the Python server
+//-----------------------------------------
+
+var pyClient = new zerorpc.Client();
+pyClient.connect("tcp://localhost:4242");
 
 //-----------------------------------------
 //	Server creation using ExpressJS
@@ -46,14 +55,28 @@ app.use(session({
 var server = http.createServer(app);
 
 //-----------------------------------------
-//	Basic account management
+//	Basic URL 
 //-----------------------------------------
 
-// Set the index page which contains the app booting script 
-// src "URL"
+// Set the index page 
 app.get('/', function (req, res) {
-	res.send('Hello world !');
+	res.sendfile('views/index.html', {root: __dirname });
 });
+
+
+// Set the index page 
+app.post('/pytest', function (req, res) {
+	var url = req.param('url', '');
+	console.log('Received url : ' + url);
+	pyClient.invoke('parseUrl', url, function(error, response, more) {
+    console.log(response);
+    res.send(response);
+});
+
+});
+//-----------------------------------------
+//	Operational methods
+//-----------------------------------------
 
 // Start the server
 app.listen(8080);
