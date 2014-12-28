@@ -5,7 +5,7 @@ class anonBrowser(mechanize.Browser):
 		mechanize.Browser.__init__(self)
 		self.set_handle_robots(False)
 		self.proxies = proxies
-		self.user_agents = user_agents + ['Mozilla/4.0', 'FireFox/6.01', 'ExactSearch', 'Nokia7110/1.0']
+		self.user_agents = user_agents + ['Mozilla/4.0', 'FireFox/6.01']
 		self.cookie_jar = cookielib.LWPCookieJar()
 		self.set_cookiejar(self.cookie_jar)
 		self.anonymize()

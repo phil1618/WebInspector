@@ -155,6 +155,16 @@ textarea {
 	margin: 0 auto;
 }
 
+.panel-main {
+	margin: 0 auto;
+	width: 1000px;
+	margin: 20px 20px 20px 20px;
+}
+
+.justify-text{
+	text-align: justify;
+}
+
 address {
 	padding: 0px 0px 0px 20px;
 }

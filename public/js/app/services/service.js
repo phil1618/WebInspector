@@ -6,8 +6,8 @@ services.factory('RemotePython', ['$http',
 		var baseUrl = 'http://localhost:8080/pytest';
 		
 		return {
-			postTarget: function(target){
-				return $http.post(baseUrl, {url : target} ).then(function(results){
+			getInfo: function(target){
+				return $http.post('http://localhost:8080/python/htmlparser', {url : target}).then(function(results){
 					return results.data;
 				});
 			}

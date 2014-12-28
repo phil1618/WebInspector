@@ -3,10 +3,49 @@
     <h2 class="form-signin-heading">Enter a URL :</h2>
     <label for="inputEmail" class="sr-only">Url</label>
     <input type="text" id="inputUrl" class="form-control" ng-model='urlTarget' placeholder="Url" required autofocus>
-    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click='submitUrl(urlTarget)'>Start ...</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click='submitUrl(urlTarget)'>Start scanning</button>
   </form>
+</div>
 
-  <ul class="list-group" ng-show="showAllLinks" ng-repeat="link in AllLinks track by $index">
-    <li class="list-group-item">{{link}}</li>
-  </ul>
+<div class="panel panel-info panel-main" id="meta_panel" >
+
+    <!-- Default panel contents -->
+    <div class="panel-heading" id="meta_panel_header"><span class="badge ">{{metaNumber}}</span> metadata found</div>
+
+    <div id="meta_panel_content">
+      <div ng-repeat="meta in AllMetas track by $index">
+        <h5>{{meta.name}}</h5>
+        <p> {{meta.content}}</p>
+      </div>
+    
+  </div>
+
+</div>
+
+<div class="panel panel-info panel-main" id="href_panel" >
+
+    <!-- Default panel contents -->
+    <div class="panel-heading" id="href_panel_header"><span class="badge ">{{linkNumber}}</span> HREF found</div>
+
+    <div id="href_panel_content">
+    <!-- HREF list group -->
+    <ul class="list-group" ng-repeat="link in AllLinks track by $index">
+      <li class="list-group-item justify-text">{{link}}</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="panel panel-info panel-main" id="script_panel" >
+
+    <!-- Default panel contents -->
+    <div class="panel-heading" id="script_panel_header"><span class="badge">{{scriptNumber}}</span>
+     SCRIPT link(s) found</div>
+
+    <div id="script_panel_content">
+    <!-- HREF list group -->
+    <ul class="list-group" ng-repeat="script in AllScripts track by $index">
+      <li class="list-group-item justify-text">{{script}}</li>
+    </ul>
+  </div>
 </div>
